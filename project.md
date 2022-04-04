@@ -1,4 +1,4 @@
-# MERN Stack Deployment
+# Project 3 - MERN Stack Deployment
 
 **Step 1 - Backend Configuration**
 ---

@@ -65,6 +65,7 @@ console.log(`Server running on port ${port}`)
 - Creating routes for the application, which is necessary as that would define endpoints the To-do app will depend on. Without the routes, the app would not know where to look to perform POST, GET & DELETE operations.
 
     - Created a routes directory in the todo folder to store a route config. Went into the routes folder (/todo/routes/) and created an api.js file and edited using vim to setup the route config.
+
 ![apijs](apijs.png)
 
 **Step 1.2 - Creating Models**

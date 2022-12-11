@@ -66,7 +66,24 @@ console.log(`Server running on port ${port}`)
 
     - Created a routes directory in the todo folder to store a route config. Went into the routes folder (/todo/routes/) and created an api.js file and edited using vim to setup the route config.
 
-![apijs](apijs.png)
+```
+const express = require ('express');
+const router = express.Router();
+
+router.get('/todos', (req, res, next) => {
+
+});
+
+router.post('/todos', (req, res, next) => {
+
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+
+})
+
+module.exports = router;
+```
 
 **Step 1.2 - Creating Models**
 ---

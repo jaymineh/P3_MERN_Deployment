@@ -14,12 +14,12 @@ sudo apt-get install -y nodejs
 
 - The above command installs both Nodejs and NPM. NPM here is the package manager for node.
     - Verified the files were installed by running `node -v` for Nodejs & `npm -v` for NPM.
-![node&npmcheck](nodecheck.png)
+![node&npmcheck](images/nodecheck.png)
 
 - Created a new directory for the project. Project is a To-do list so created a To-do directory by running `mkdir Todo`
 
 Initialized project by running `npm init` to create the `package.json` file, which contains info about the ap and the dependencies it needs to run.
-![npminit](npminit.png)
+![npminit](images/npminit.png)
 
 **Step 1.1 - Install ExpressJS**
 ---
@@ -54,10 +54,10 @@ console.log(`Server running on port ${port}`)
 ```
 
 - Started the server by using `node index.js` in the terminal to see if the server is running. Server is running on port 5000 as seen below:
-![nodeindex](nodeindex.png)
+![nodeindex](images/nodeindex.png)
 
 - Opened up port 5000 on the NSG to allow for communication since the server is running on port 5000.
-![inbound](inbound.png)
+![inbound](images/inbound.png)
 
     - Checked if I could access the server on my browser via the public ip address. Test was successful.
     ![welcome](welcome.png)
@@ -151,19 +151,19 @@ Todo.findOneAndDelete({"_id": req.params.id})
 
 module.exports = router;
 ```
-![vimapijs](vimapijs.png)
+![vimapijs](images/vimapijs.png)
 
 **Step 1.3 - Installing MongoDB database**
 ---
 
 - Set up my MongoDB database and collection in mLab.
-![dbcol](dbcol.png)
+![dbcol](images/dbcol.png)
 
 - Configured the access and entry deletion as seen below.
-![netaxx](netaxx.png)
+![netaxx](images/netaxx.png)
 
 - Created the `.env` file that would be used to access environment variables, as was specified in the index.js file. Process.env was specified in index.js but was not yet created and thus, had no way to access environment variables.
-![dotenv](dotenv.png)
+![dotenv](images/dotenv.png)
 
     - Also added the database connection string and updated the values as seen above.
 
@@ -210,18 +210,18 @@ console.log(`Server running on port ${port}`)
 ```
 
 - Confirmed to see if all configs were correct bu running the index.js node with `node index.js`.
-![nodechk](nodechk.png)
+![nodechk](images/nodechk.png)
 
 - Ran a check with Postman to test the API endpoints of the app to ensure they are working.
 
     - Created a POST request to the API via `http://<PublicIPaddress>:5000/api/todo` & ensured to set up the header key `Content-Type` as `application/json`
-![todocheck](todocheck.png)
+![todocheck](images/todocheck.png)
 
     - Created a GET request to retrieve the list of entries submitted via the POST request to the API and got the successful output below.
-![getreq](getreq.png)
+![getreq](images/getreq.png)
 
     - Created a DELETE request to remove some of the entries submitted by the POST request by adding the ID to the ID as part of the URL and NOT the body. See below.
-![delreq](delreq.png)
+![delreq](images/delreq.png)
 
 **Step 2 - Front End**
 ---
@@ -239,10 +239,10 @@ console.log(`Server running on port ${port}`)
 },
 ```
 After modification, it looked like this:
-![packagejson](packagejson.png)
+![packagejson](images/packagejson.png)
 
 - Changed directory to `client` to add proxy configuration in the `package.json` file to make accessing the app over the internet possible. See the result below:
-![proxyhost](proxyhost.png)
+![proxyhost](images/proxyhost.png)
 
 - Changed directory to `Todo` and and ran the command `npm run dev` to start the app.
 
@@ -521,14 +521,14 @@ monospace;
 - Went back into the `Todo` directory and ran the app by using `npm run dev`.
 
 - Tested the app on my web browser by going to <localhost>:3000. Successfully connected to the app and saw a list of all my previous entries.
-![todoapp](todoapp.png)
+![todoapp](images/todoapp.png)
 
 **MERN Stack Successfully Deployed**
 
 ***
 **Note**
 - I ran into the error below when running `node index.js` to start the node.
-![eaderror](eaderror.png)
+![eaderror](images/eaderror.png)
 Turns out that the node wasn't properly shut down previously and threw that error saying that there was something running on that port already. I resolved the issue by getting the process ID and killing it. Using `lsof -i tcp:5000` & `kill <pid>`.
 
 - I found this project particularly confusing due to the fact that there were many files/dirs with confusing naming conventions. E.g a folder named `Todo`, a file named `todo.js`, another one called `Todo.js` and in some of the code, some config pointing to `todos`. I actually thought they were "wrong" and intentionally done that way for us to figure it out so I tried making everything (including the code) conform to just `todo.js` for files, `todo` for directory and `todo` in all the code. It worked for a while but towards the end of the project I ran into some errors which I couldn't pinpoint. I had to use the tutorial videos as a last resort because I was spending too much time on the project, which helped me finish it up. Though the many "todos" are still weird.
